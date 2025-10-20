@@ -1,0 +1,3 @@
+C:\Users\melor\Desktop\Coding\C_C++\Tetris\x64\Debug\raylib.dll
+C:\Users\melor\Desktop\Coding\C_C++\Tetris\x64\Debug\glfw3.dll
+C:\Users\melor\Desktop\Coding\C_C++\Tetris\Tetris\x64\Debug\Tetris.vcxproj.Up2Date

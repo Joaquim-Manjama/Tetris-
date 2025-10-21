@@ -10,7 +10,7 @@ int main()
 
 	Grid grid = Grid();
 
-	ZBlock block = ZBlock();
+	TBlock block = TBlock();
 
 	while (WindowShouldClose() == false) 
 	{
@@ -21,7 +21,6 @@ int main()
 
 		EndDrawing();
 	}
-
 
 	CloseWindow();
 	return 0;

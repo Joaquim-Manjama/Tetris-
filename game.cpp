@@ -1,5 +1,4 @@
 #include "game.h"
-#include <random>
 
 Game::Game()
 {
@@ -15,6 +14,8 @@ Block Game::GetRandomBlock()
 	{
 		blocks = GetAllBlocks();
 	}
+	
+	srand(time(0));
 	int randomIndex = rand() % blocks.size();
 	Block block = blocks[randomIndex];
 	blocks.erase(blocks.begin() + randomIndex);
@@ -57,7 +58,7 @@ void Game::HandleInput()
 void Game::MoveBlockLeft()
 { 
 	currentBlock.Move(0, -1);
-	if (isBlockOutside())
+	if (isBlockOutside() || !BlockFits())
 	{
 		currentBlock.Move(0, 1);
 	}
@@ -66,7 +67,7 @@ void Game::MoveBlockLeft()
 void Game::MoveBlockRight()
 {
 	currentBlock.Move(0, 1);
-	if (isBlockOutside())
+	if (isBlockOutside() || !BlockFits())
 	{
 		currentBlock.Move(0, -1);
 	}
@@ -75,9 +76,10 @@ void Game::MoveBlockRight()
 void Game::MoveBlockDown()
 {
 	currentBlock.Move(1, 0);
-	if (isBlockOutside())
+	if (isBlockOutside() || !BlockFits())
 	{
 		currentBlock.Move(-1, 0);
+		LockBlock();
 	}
 }
 
@@ -101,4 +103,29 @@ void Game::RotateBlock()
 	{
 		currentBlock.UndoRotation();
 	}
+}
+
+void Game::LockBlock()
+{
+	std::vector<Position> tiles = currentBlock.GetCellPositions();
+
+	for (Position item : tiles)
+	{
+		grid.grid[item.row][item.column] = currentBlock.id;
+	}
+	currentBlock = nextBlock;
+	nextBlock = GetRandomBlock();
+}
+
+bool Game::BlockFits()
+{
+	std::vector<Position> tiles = currentBlock.GetCellPositions();
+	for (Position item : tiles)
+	{
+		if (grid.isCellEmpty(item.row, item.column) == false)
+		{
+			return false;
+		}
+	}
+	return true;
 }

@@ -1,4 +1,7 @@
 ﻿  Tetris.cpp
+C:\Users\melor\Desktop\Coding\C_C++\Tetris\game.cpp(18,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  (compiling source file 'Tetris.cpp')
+  
   Tetris.vcxproj -> C:\Users\melor\Desktop\Coding\C_C++\Tetris\x64\Debug\Tetris.exe
   'pwsh.exe' is not recognized as an internal or external command,
   operable program or batch file.

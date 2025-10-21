@@ -17,7 +17,7 @@ public:
 	Grid grid;
 
 private:
-	bool isBlockOutside();
+	bool IsBlockOutside();
 	void RotateBlock();
 	void LockBlock();
 	bool BlockFits();

@@ -9,6 +9,7 @@ public:
 	void Initialize();
 	void Draw();
 	int grid[20][10];
+
 private:
 	int numRows;
 	int numColumns;
